@@ -37,3 +37,28 @@ C:\Users\ozzi22lol\source\repos\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.Pr
 C:\Users\ozzi22lol\source\repos\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.csproj.GenerateResource.cache
 C:\Users\ozzi22lol\source\repos\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.csproj.CoreCompileInputs.cache
 C:\Users\ozzi22lol\source\repos\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.csproj.CopyComplete
+<<<<<<< HEAD
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\bin\Debug\RPG_Game.exe.config
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\bin\Debug\RPG_Game.exe
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\bin\Debug\RPG_Game.pdb
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\bin\Debug\WpfAnimatedGif.dll
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\bin\Debug\WpfAnimatedGif.xml
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.csprojAssemblyReference.cache
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\MainWindow.g.cs
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\App.g.cs
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game_MarkupCompile.cache
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game_MarkupCompile.lref
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\MainWindow.baml
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.g.resources
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.Properties.Resources.resources
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.csproj.GenerateResource.cache
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.csproj.CoreCompileInputs.cache
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.csproj.CopyComplete
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.exe
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\RPG_Game.pdb
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\pages\Combat.g.cs
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\pages\Combat.baml
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\pages\OpenWorld.g.cs
+C:\Users\ozzi22lol\Desktop\RPG_Game\RPG-Game\RPG_Game\obj\Debug\pages\OpenWorld.baml
+=======
+>>>>>>> 535d76f905a445fc6f8cf7d4850bbb1cb377183b

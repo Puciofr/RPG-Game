@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+﻿using RPG_Game.pages;
+using System;
+=======
 ﻿using System;
+>>>>>>> 535d76f905a445fc6f8cf7d4850bbb1cb377183b
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -24,14 +29,25 @@ namespace RPG_Game
     /// </summary>
     public partial class MainWindow : Window
     {
+<<<<<<< HEAD
+        public static Frame frame;
+
+=======
         public List<int> stop_at = new List<int>();
         private enum State : int { standing_right, standing_left, going_right, going_left };
         private State state;
         private System.Windows.Threading.DispatcherTimer dispatcherTimer;
+>>>>>>> 535d76f905a445fc6f8cf7d4850bbb1cb377183b
         public MainWindow()
         {
             InitializeComponent();
 
+<<<<<<< HEAD
+            frame = myFrame;
+
+        }
+
+=======
             this.Cursor = new Cursor(System.Reflection.Assembly.GetExecutingAssembly().Location + "/../../../resources/wow.cur");
 
             state = State.standing_right;
@@ -176,6 +192,7 @@ namespace RPG_Game
                 }
             }
         }
+>>>>>>> 535d76f905a445fc6f8cf7d4850bbb1cb377183b
 
     }
 }

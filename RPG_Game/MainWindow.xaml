@@ -6,6 +6,17 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:RPG_Game"
         mc:Ignorable="d"
+<<<<<<< HEAD
+        Title="Wowko" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <TextBlock x:Key="CursorGrab" Cursor="resources/wow.cur"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+
+        <Frame x:Name="myFrame" Source="pages/OpenWorld.xaml" NavigationUIVisibility="Hidden"></Frame>
+=======
         Title="Wowko" Height="450" Width="800"
         KeyDown="window_KeyDown"
         KeyUp="window_KeyUp">
@@ -88,6 +99,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
+>>>>>>> 535d76f905a445fc6f8cf7d4850bbb1cb377183b
 
     </Grid>
 </Window>

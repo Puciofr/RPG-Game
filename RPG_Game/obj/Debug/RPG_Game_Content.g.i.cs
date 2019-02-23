@@ -8,6 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/character_standing1.gif")]
+=======
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("world%20of%20warcraft.ico")]
+>>>>>>> 535d76f905a445fc6f8cf7d4850bbb1cb377183b
 
 
