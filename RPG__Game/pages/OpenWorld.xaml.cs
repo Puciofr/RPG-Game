@@ -1,4 +1,5 @@
-﻿using RPG_Game.pages;
+﻿using RPG__Game;
+using RPG_Game.pages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -117,19 +118,6 @@ namespace RPG_Game.pages
                 translateTransform.X = 0;
             }
 
-        }
-
-        private void ControllerCurrentFrameChanged(object sender, EventArgs e)
-        {
-            var controller = ImageBehavior.GetAnimationController(character);
-            if (controller != null)
-            {
-                var position = controller.CurrentFrame;
-                if (stop_at.Contains(position))
-                {
-                    controller.Pause();
-                }
-            }
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)

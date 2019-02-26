@@ -6,7 +6,7 @@
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:RPG_Game.pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="490" d:DesignWidth="800"
       Title="OpenWorld"
       KeyDown="window_KeyDown"
       KeyUp="window_KeyUp">
@@ -35,7 +35,7 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image x:Name="character" gif:ImageBehavior.AnimatedSource="../resources/character2.gif" gif:ImageBehavior.AutoStart="False" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px" Visibility="Hidden">
+        <Image x:Name="character" gif:ImageBehavior.AnimatedSource="../resources/character/character_walk.gif" gif:ImageBehavior.AutoStart="False" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px" Visibility="Hidden">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="1" ScaleX="1"/>
@@ -46,7 +46,7 @@
             </Image.RenderTransform>
         </Image>
 
-        <Image x:Name="character_standing" gif:ImageBehavior.AnimatedSource="../resources/character_standing1.gif" gif:ImageBehavior.AutoStart="True" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px" Visibility="Visible">
+        <Image x:Name="character_standing" gif:ImageBehavior.AnimatedSource="../resources/character/character_standing.gif" gif:ImageBehavior.AutoStart="True" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px" Visibility="Visible">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="1" ScaleX="1"/>
@@ -103,7 +103,7 @@
             </Image.RenderTransform>
         </Image>
 
-        <Image x:Name="enemy" Source="../resources/enemy.png" Grid.Column="8" Grid.Row="0" Grid.RowSpan="3" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px">
+        <Image x:Name="enemy" gif:ImageBehavior.AnimatedSource="../resources/enemy/enemy_standing.gif" gif:ImageBehavior.AutoStart="True" Grid.Column="8" Grid.Row="0" Grid.RowSpan="3" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="1" ScaleX="1"/>

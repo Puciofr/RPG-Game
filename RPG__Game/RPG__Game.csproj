@@ -66,24 +66,37 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="EnemyAttack.cs" />
+    <Compile Include="EnemyStats.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="pages\Combat.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\GameOver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\OpenWorld.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="pages\Combat.xaml.cs">
       <DependentUpon>Combat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\GameOver.xaml.cs">
+      <DependentUpon>GameOver.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\OpenWorld.xaml.cs">
       <DependentUpon>OpenWorld.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlayerAttack.cs" />
+    <Compile Include="PlayerStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -110,7 +123,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="resources\enemy\enemy_attack.gif" />
+    <Resource Include="resources\enemy\enemy_block.gif" />
+    <Resource Include="resources\enemy\enemy_death.gif" />
+    <Resource Include="resources\enemy\enemy_hit.gif" />
+    <Resource Include="resources\enemy\enemy_standing.gif" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\background1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -118,13 +137,10 @@
     <Resource Include="resources\background2.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="resources\character2.gif">
+    <Resource Include="resources\character\character_walk.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="resources\character_standing1.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="resources\enemy.png">
+    <Resource Include="resources\character\character_standing.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="resources\pavement2.jpg">
@@ -133,6 +149,31 @@
     <Resource Include="resources\wow.cur">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\UI\actionbar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\character\character_attack.gif" />
+    <Resource Include="resources\character\character_death.gif" />
+    <Resource Include="resources\character\character_dodge.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\UI\enemy_healthbar.png" />
+    <Resource Include="resources\UI\healthbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\character\character_hit.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\enemy\enemy_slam.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="resources\particles\fireball.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

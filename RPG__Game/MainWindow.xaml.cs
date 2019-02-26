@@ -1,4 +1,5 @@
-﻿using RPG_Game.pages;
+﻿using RPG__Game;
+using RPG_Game.pages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -25,12 +26,25 @@ namespace RPG_Game
     public partial class MainWindow : Window
     {
         public static Frame frame;
+        public PlayerStats stats;
 
         public MainWindow()
         {
             InitializeComponent();
 
+            const int snugContentWidth = 800;
+            const int snugContentHeight = 490;
+
+            var horizontalBorderHeight = SystemParameters.ResizeFrameHorizontalBorderHeight;
+            var verticalBorderWidth = SystemParameters.ResizeFrameVerticalBorderWidth;
+            var captionHeight = SystemParameters.CaptionHeight;
+
+            Width = snugContentWidth + 2 * verticalBorderWidth;
+            Height = snugContentHeight + captionHeight + 2 * horizontalBorderHeight;
+
             frame = myFrame;
+
+            stats = new PlayerStats();
 
         }
 

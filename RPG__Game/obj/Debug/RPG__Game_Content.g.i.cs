@@ -8,12 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/background1.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/background2.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/character2.gif")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/character_standing1.gif")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/enemy.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/pavement2.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/wow.cur")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/particles/fireball.gif")]
 
 
