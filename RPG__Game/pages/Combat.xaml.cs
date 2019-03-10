@@ -43,6 +43,16 @@ namespace RPG_Game.pages
             delayTimer = new System.Windows.Threading.DispatcherTimer();
             delayTimer.Tick += new EventHandler(delayTimer_Tick);
             delayTimer.Interval = TimeSpan.FromSeconds(0.5);
+
+            Application.Current.MainWindow.KeyDown += Page_KeyDown;
+        }
+
+        private void Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.I)
+            {
+                MainWindow.frame.Navigate(new InventoryPage());
+            }
         }
 
         private void delayTimer_Tick(object sender, EventArgs e)
@@ -85,7 +95,7 @@ namespace RPG_Game.pages
             turn = Turn.PlayerTurn;
 
             frostfirebolt.IsEnabled = true;
-            //spellDisabled.Opacity = 0;
+            frostfirebolt.Opacity = 0;
 
         }
         public void enemyHitCompleted(object sender, RoutedEventArgs e)
@@ -136,7 +146,7 @@ namespace RPG_Game.pages
             turn = Turn.PlayerTurn;
 
             frostfirebolt.IsEnabled = true;
-            //spellDisabled.Opacity = 0;
+            frostfirebolt.Opacity = 0;
         }
 
         public void enemyBlockCompleted(object sender, RoutedEventArgs e)
@@ -176,7 +186,7 @@ namespace RPG_Game.pages
         {
             if (stats.CurrentMana >= stats.GetbByName("frostfirebolt").Cost)
             {
-                //spellDisabled.Opacity = 0.75;
+                frostfirebolt.Opacity = 0.75;
 
                 character_attack.Visibility = Visibility.Visible;
                 character_standing.Visibility = Visibility.Hidden;

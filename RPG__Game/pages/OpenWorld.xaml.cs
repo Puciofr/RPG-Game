@@ -1,4 +1,5 @@
 ﻿using RPG__Game;
+using RPG__Game.pages;
 using RPG_Game.pages;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,11 @@ namespace RPG_Game.pages
         {
             dispatcherTimer.Start();
             var controller = ImageBehavior.GetAnimationController(character);
+
+            if (e.Key == Key.I)
+            {
+                MainWindow.frame.Navigate(new InventoryPage());
+            }
 
             if (e.Key == Key.A && state != State.going_left)
             {

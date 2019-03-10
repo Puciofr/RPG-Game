@@ -58,6 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ControlTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,6 +72,8 @@
     </Compile>
     <Compile Include="EnemyAttack.cs" />
     <Compile Include="EnemyStats.cs" />
+    <Compile Include="inventory\Inventory.cs" />
+    <Compile Include="inventory\IPotion.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -77,6 +83,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\GameOver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\InventoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,6 +101,9 @@
     </Compile>
     <Compile Include="pages\GameOver.xaml.cs">
       <DependentUpon>GameOver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\InventoryPage.xaml.cs">
+      <DependentUpon>InventoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="pages\OpenWorld.xaml.cs">
       <DependentUpon>OpenWorld.xaml</DependentUpon>
@@ -165,12 +178,23 @@
     <Resource Include="resources\UI\healthbar.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\UI\arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\inventory_background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="resources\character\character_hit.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="resources\enemy\enemy_slam.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="resources\gameover_background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\items\potion_health.jpg" />
+    <Resource Include="resources\items\potion_mana.jpg" />
     <Content Include="resources\particles\fireball.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

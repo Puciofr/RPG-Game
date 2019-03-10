@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ozzi22lol\Desktop\RPG__Game\RPG__Game\obj\Debug\
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\
 RPG__Game
 none
 false
 DEBUG;TRACE
-C:\Users\ozzi22lol\Desktop\RPG__Game\RPG__Game\App.xaml
-4-500592864
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\App.xaml
+6-2065372037
 1765021914
-12-1047783708
-14-1594472646
-MainWindow.xaml;pages\Combat.xaml;pages\GameOver.xaml;pages\OpenWorld.xaml;
+15395800404
+141214955036
+ControlTemplate.xaml;MainWindow.xaml;pages\Combat.xaml;pages\GameOver.xaml;pages\InventoryPage.xaml;pages\OpenWorld.xaml;
 
-True
+False
 

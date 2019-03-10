@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:RPG__Game"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="pack://application:,,,/RPG__Game;component/ControlTemplate.xaml"></ResourceDictionary>
     </Application.Resources>
 </Application>
