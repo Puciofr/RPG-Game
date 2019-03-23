@@ -26,7 +26,7 @@ namespace RPG_Game
     public partial class MainWindow : Window
     {
         public static Frame frame;
-        public PlayerStats stats;
+        public static PlayerStats stats;
 
         public MainWindow()
         {

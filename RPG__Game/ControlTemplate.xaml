@@ -28,4 +28,17 @@
         </Style.Triggers>
     </Style>
 
+
+    <Style TargetType="{x:Type ListViewItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <ContentPresenter HorizontalAlignment="Left" Margin="2,3,2,3" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
 </ResourceDictionary>

@@ -31,7 +31,7 @@ namespace RPG__Game
 
             Attacks = new List<EnemyAttack>();
 
-            Attacks.Add(new EnemyAttack("Autoattack", 1, -5));
+            Attacks.Add(new EnemyAttack("Autoattack", 3, -5));
             Attacks.Add(new EnemyAttack("Slam", 5, 5));
 
         }

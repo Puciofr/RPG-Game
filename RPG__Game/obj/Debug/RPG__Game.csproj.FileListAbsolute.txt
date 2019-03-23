@@ -30,7 +30,6 @@ C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\RPG__Game.exe
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\RPG__Game.pdb
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\WpfAnimatedGif.dll
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\WpfAnimatedGif.xml
-C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\RPG__Game.csprojAssemblyReference.cache
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\MainWindow.g.cs
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\pages\Combat.g.cs
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\pages\GameOver.g.cs
@@ -54,3 +53,15 @@ C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\App.baml
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\ControlTemplate.baml
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\pages\InventoryPage.g.cs
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\pages\InventoryPage.baml
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\CommonServiceLocator.dll
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\RPG__Game.csprojAssemblyReference.cache

@@ -166,7 +166,7 @@ namespace RPG_Game.pages
 
                 if (mainWindow != null)
                 {
-                    stats = mainWindow.stats;
+                    stats = MainWindow.stats;
                     enemystats = new EnemyStats();
 
                     level.Content = stats.Level;
