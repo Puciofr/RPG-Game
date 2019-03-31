@@ -65,3 +65,7 @@ C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.Extra
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\RPG__Game.csprojAssemblyReference.cache
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\pages\QuestCompleted.g.cs
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\pages\QuestCompleted.baml
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\pages\VendorPage.g.cs
+C:\Users\ozzi22lol\Desktop\RPG-Game\RPG__Game\obj\Debug\pages\VendorPage.baml

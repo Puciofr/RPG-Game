@@ -15,6 +15,10 @@ namespace RPG__Game
         public int Level { get; set; }
         public string Name { get; set; }
         public float DodgeChance { get; set; }
+        public int Position { get; set; }
+        public int Stamina { get; set; }
+        public int Intellect { get; set; }
+        public int UpgradePoints { get; set; }
 
         public List<PlayerAttack> Attacks;
 
@@ -26,15 +30,27 @@ namespace RPG__Game
             MaxMana = 20;
             Level = 1;
             DodgeChance = 0.05F;
+            Position = 0;
+            Stamina = 0;
+            Intellect = 0;
+            UpgradePoints = 1;
 
             Name = "Vochcalpádlo";
 
             Attacks = new List<PlayerAttack>();
 
-            Attacks.Add(new PlayerAttack("frostfirebolt", 5, 2));
+            Attacks.Add(new PlayerAttack("frostfirebolt", 5, 4));
+
+            Attacks.Add(new PlayerAttack("pyroblast", 10, 4));
+
+            Attacks.Add(new PlayerAttack("iceblock", 0, 4));
+
+            Attacks.Add(new PlayerAttack("evocation", 0, 0));
+
+            Attacks.Add(new PlayerAttack("escape", 0, 0));
         }
 
-        public PlayerAttack GetbByName(string name)
+        public PlayerAttack GetByName(string name)
         {
             foreach (PlayerAttack i in Attacks)
             {

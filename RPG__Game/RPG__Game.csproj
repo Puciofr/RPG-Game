@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
@@ -73,6 +76,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="pages\QuestCompleted.xaml.cs">
+      <DependentUpon>QuestCompleted.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\VendorPage.xaml.cs">
+      <DependentUpon>VendorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Quest.cs" />
     <Page Include="ControlTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,8 +97,10 @@
     </Compile>
     <Compile Include="EnemyAttack.cs" />
     <Compile Include="EnemyStats.cs" />
+    <Compile Include="inventory\HealthPotion.cs" />
     <Compile Include="inventory\Inventory.cs" />
     <Compile Include="inventory\IPotion.cs" />
+    <Compile Include="inventory\ManaPotion.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -106,6 +118,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\OpenWorld.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\QuestCompleted.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\VendorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,6 +162,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -193,6 +214,16 @@
     <Resource Include="resources\UI\healthbar.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="resources\spells\spell_escape.jpg" />
+    <Resource Include="resources\spells\spell_evocation.jpg" />
+    <Resource Include="resources\particles\pyroblast.gif" />
+    <Resource Include="resources\spells\spell_fireball.jpg" />
+    <Resource Include="resources\spells\spell_iceblock.jpg" />
+    <Resource Include="resources\spells\spell_pyroblast.jpg" />
+    <Resource Include="resources\wow3.cur" />
+    <Resource Include="resources\wow2.cur" />
+    <Resource Include="resources\vendor_background.jpg" />
+    <Resource Include="resources\questcompleted_background.jpg" />
     <Resource Include="resources\UI\arrow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -205,14 +236,17 @@
     <Resource Include="resources\enemy\enemy_slam.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="resources\gameover_background.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="resources\items\potion_health.jpg" />
     <Resource Include="resources\items\potion_mana.jpg" />
+    <Resource Include="resources\character\character_cheer.gif" />
+    <Resource Include="resources\gameover_background.jpg" />
+    <Resource Include="resources\character\character_evocation.gif" />
+    <Resource Include="resources\character\character_iceblock.gif" />
+    <Resource Include="resources\character\character_iceblock2.png" />
     <Content Include="resources\particles\fireball.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

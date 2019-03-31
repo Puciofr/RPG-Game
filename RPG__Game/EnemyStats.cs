@@ -15,6 +15,7 @@ namespace RPG__Game
         public int Level { get; set; }
         public string Name { get; set; }
         public float DodgeChance { get; set; }
+        public int Positon { get; set; }
 
         public List<EnemyAttack> Attacks;
 
@@ -26,6 +27,7 @@ namespace RPG__Game
             MaxRage = 20;
             Level = 1;
             DodgeChance = 0.05F;
+            Positon = 0;
 
             Name = "Wojak";
 

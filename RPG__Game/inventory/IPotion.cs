@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace RPG__Game
 {
-    interface IPotion
+    public interface IPotion
     {
+        BitmapImage Icon { get; set; }
+        int Number { get; set; }
         string Name { get; set; }
-        int Value { get; set; }
-        int Price { get; set; }
+        string ToolTip { get; set; }
     }
 }

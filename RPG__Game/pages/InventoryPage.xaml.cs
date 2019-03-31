@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using RPG__Game.inventory;
 using RPG_Game;
 using RPG_Game.pages;
 using System;
@@ -25,93 +26,119 @@ namespace RPG__Game.pages
     public partial class InventoryPage : Page
     {
         private const int healthbarSize = 175;
+        private int remainingPoints;
         public InventoryPage()
         {
             InitializeComponent();
+
+            this.Cursor = new Cursor(System.Reflection.Assembly.GetExecutingAssembly().Location + "/../../../resources/wow.cur");
 
             updateHealthbars();
 
             Application.Current.MainWindow.KeyDown += Page_KeyDown;
 
-            List<InventoryListview> items = new List<InventoryListview>();
-            items.Add(new InventoryListview() { Icon = new BitmapImage(new Uri("pack://application:,,,/resources/items/potion_health.jpg")), Number = 5, Name = "HealthPotion", ToolTip = "Přidá 20 zdraví" });
-            items.Add(new InventoryListview() { Icon = new BitmapImage(new Uri("pack://application:,,,/resources/items/potion_mana.jpg")), Number = 5, Name = "ManaPotion", ToolTip = "Přidá 20 many" });
+            lvUsers.ItemsSource = MainWindow.Inventory.PotionInventory;
 
-            lvUsers.ItemsSource = items;
+            level.Content = MainWindow.Stats.Level;
+            name.Content = MainWindow.Stats.Name;
 
-            level.Content = MainWindow.stats.Level;
-            name.Content = MainWindow.stats.Name;
+            golds.Content = MainWindow.Inventory.Golds;
+
+            loadSliders();
+
+            updateSliders();
 
         }
 
-        public class InventoryListview
+        public void Listview_SelectionChanged(object sender, MouseButtonEventArgs e)
         {
-            public BitmapImage Icon { get; set; }
-            public int Number { get; set; }
-            public string Name { get; set; }
-            public string ToolTip { get; set; }
-        }
 
-        public void Listview_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListView inventory = sender as ListView;
-            InventoryListview lvi = (inventory.SelectedItem) as InventoryListview;
+            var lvi = (sender as Grid).DataContext as IPotion;
+
+            if (lvi.Name == "HealthPotion")
+            {
+                if (MainWindow.Stats.CurrentHealth < MainWindow.Stats.MaxHealth)
+                {
+                    MainWindow.Stats.CurrentHealth = MainWindow.Stats.MaxHealth;
+                    updateHealthbars();
+                } else
+                {
+                    return;
+                }
+            }
+            else if (lvi.Name == "ManaPotion")
+            {
+                if (MainWindow.Stats.CurrentMana < MainWindow.Stats.MaxMana)
+                {
+                    MainWindow.Stats.CurrentMana = MainWindow.Stats.MaxMana;
+                    updateHealthbars();
+                } else
+                {
+                    return;
+                }
+            }
 
             lvi.Number--;
 
             if (lvi.Number == 0)
             {
-                //inventory.Items.RemoveAt(inventory.SelectedIndex);
-                //(inventory.ItemsSource as ItemCollection).RemoveAt(0);
-                //var source = inventory.ItemsSource.removeitem;
-                //inventory.Items.Remove(inventory.Items.CurrentItem);
-
+                var source = lvUsers.ItemsSource as List<IPotion>;
+                source.Remove(lvi);
             }
 
-            inventory.Items.Refresh();
-
-            if (lvi.Name == "HealthPotion")
-            {
-                MainWindow.stats.CurrentHealth = MainWindow.stats.MaxHealth;
-                updateHealthbars();
-            } else if (lvi.Name == "ManaPotion")
-            {
-                MainWindow.stats.CurrentMana = MainWindow.stats.MaxMana;
-                updateHealthbars();
-            }
+            lvUsers.Items.Refresh();
 
         }
 
 
-
-
         private void Page_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.I)
+            if (MainWindow.CurrentPage != this)
             {
-                MainWindow.frame.Navigate(new Combat());
+                return;
+            }
+            if (e.Key == Key.Escape)
+            {
+                if (MainWindow.Stats.Position != MainWindow.pickClosestEnemy().Positon)
+                {
+                    MainWindow.CurrentPage = MainWindow.OpenWorld;
+                    MainWindow.Frame.Navigate(MainWindow.OpenWorld);
+                } else
+                {
+                    MainWindow.CurrentPage = MainWindow.Combat;
+                    MainWindow.Frame.Navigate(MainWindow.Combat);
+                }
+
             }
         }
 
         private void SliderAdd_Click(object sender, RoutedEventArgs e)
         {
             StaminaSlider.Value += 1;
+
+            updateSliders();
         }
 
-       
+
         private void SliderRemove_Click(object sender, RoutedEventArgs e)
         {
             StaminaSlider.Value -= 1;
+
+            updateSliders();
         }
 
         private void SliderAdd2_Click(object sender, RoutedEventArgs e)
         {
             IntellectSlider.Value += 1;
+
+            updateSliders();
         }
 
         private void SliderRemove2_Click(object sender, RoutedEventArgs e)
         {
             IntellectSlider.Value -= 1;
+
+            updateSliders();
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -124,25 +151,127 @@ namespace RPG__Game.pages
 
         }
 
-        private void HealthPotion_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.stats.CurrentHealth = MainWindow.stats.MaxHealth;
-            updateHealthbars();
-        }
-
-        private void ManaPotion_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.stats.CurrentMana = MainWindow.stats.MaxMana;
-            updateHealthbars();
-        }
 
         private void updateHealthbars()
         {
-            Health.Width = healthbarSize * MainWindow.stats.CurrentHealth / MainWindow.stats.MaxHealth;
-            HealthNumeric.Content = MainWindow.stats.CurrentHealth + " / " + MainWindow.stats.MaxHealth;
-            Mana.Width = healthbarSize * MainWindow.stats.CurrentMana / MainWindow.stats.MaxMana;
-            ManaNumeric.Content = MainWindow.stats.CurrentMana + " / " + MainWindow.stats.MaxMana;
+            Health.Width = healthbarSize * MainWindow.Stats.CurrentHealth / MainWindow.Stats.MaxHealth;
+            HealthNumeric.Content = MainWindow.Stats.CurrentHealth + " / " + MainWindow.Stats.MaxHealth;
+            Mana.Width = healthbarSize * MainWindow.Stats.CurrentMana / MainWindow.Stats.MaxMana;
+            ManaNumeric.Content = MainWindow.Stats.CurrentMana + " / " + MainWindow.Stats.MaxMana;
         }
 
+        private void updatePage(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            updateGolds();
+
+            updateHealthbars();
+        }
+
+        private void loadSliders()
+        {
+            StaminaSlider.Value = MainWindow.Stats.Stamina;
+            IntellectSlider.Value = MainWindow.Stats.Intellect;
+            remainingPoints = MainWindow.Stats.UpgradePoints;
+        }
+
+        private void updateSliders()
+        {
+
+            if (StaminaSlider.Value == MainWindow.Stats.Stamina)
+            {
+                SliderRemove.Visibility = Visibility.Hidden;
+                SliderRemoveImg.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                SliderRemove.Visibility = Visibility.Visible;
+                SliderRemoveImg.Visibility = Visibility.Visible;
+            }
+
+            if (IntellectSlider.Value == MainWindow.Stats.Intellect)
+            {
+                SliderRemove2.Visibility = Visibility.Hidden;
+                SliderRemove2Img.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                SliderRemove2.Visibility = Visibility.Visible;
+                SliderRemove2Img.Visibility = Visibility.Visible;
+            }
+
+            remainingPoints = MainWindow.Stats.UpgradePoints + MainWindow.Stats.Stamina - (int)StaminaSlider.Value + MainWindow.Stats.Intellect - (int)IntellectSlider.Value;
+            UpgradePointsLabel.Content = "Počet vylepšovajících bodů: " + remainingPoints;
+
+            if (remainingPoints == 0)
+            {
+                SliderAdd.Visibility = Visibility.Hidden;
+                SliderAddImg.Visibility = Visibility.Hidden;
+
+                SliderAdd2.Visibility = Visibility.Hidden;
+                SliderAdd2Img.Visibility = Visibility.Hidden;
+            } else
+            {
+                SliderAdd.Visibility = Visibility.Visible;
+                SliderAddImg.Visibility = Visibility.Visible;
+
+                SliderAdd2.Visibility = Visibility.Visible;
+                SliderAdd2Img.Visibility = Visibility.Visible;
+            }
+
+            if (remainingPoints != MainWindow.Stats.UpgradePoints)
+            {
+                ApplyChanges.Visibility = Visibility.Visible;
+            } else
+            {
+                ApplyChanges.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = new Cursor(System.Reflection.Assembly.GetExecutingAssembly().Location + "/../../../resources/wow3.cur");
+        }
+
+        private void button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = new Cursor(System.Reflection.Assembly.GetExecutingAssembly().Location + "/../../../resources/wow.cur");
+        }
+
+        private void img_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = new Cursor(System.Reflection.Assembly.GetExecutingAssembly().Location + "/../../../resources/wow3.cur");
+        }
+
+        private void img_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = new Cursor(System.Reflection.Assembly.GetExecutingAssembly().Location + "/../../../resources/wow.cur");
+        }
+
+        private void ApplyChanges_Click(object sender, RoutedEventArgs e)
+        {
+            int newStamina = (int)StaminaSlider.Value - MainWindow.Stats.Stamina;
+            int newIntellect = (int)IntellectSlider.Value - MainWindow.Stats.Intellect;
+
+            MainWindow.Stats.Stamina = (int)StaminaSlider.Value;
+            MainWindow.Stats.Intellect = (int)IntellectSlider.Value;
+
+            MainWindow.Stats.UpgradePoints = remainingPoints;
+
+            MainWindow.Stats.MaxHealth = 20 + MainWindow.Stats.Stamina * 3;
+            MainWindow.Stats.MaxMana = 20 + MainWindow.Stats.Intellect * 3;
+
+            MainWindow.Stats.CurrentHealth += newStamina * 3;
+            MainWindow.Stats.CurrentMana += newIntellect * 3;
+
+            updateSliders();
+
+            updateHealthbars();
+
+        }
+
+        private void updateGolds()
+        {
+            golds.Content = MainWindow.Inventory.Golds;
+        }
     }
 }

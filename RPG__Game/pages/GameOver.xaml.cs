@@ -23,9 +23,22 @@ namespace RPG__Game.pages
         public GameOver()
         {
             InitializeComponent();
+
+            this.Cursor = new Cursor(System.Reflection.Assembly.GetExecutingAssembly().Location + "/../../../resources/wow.cur");
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void newGame_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void loadGame_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void exitGame_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Opravdu si přejete ukončit hru?", "Potvrzení", System.Windows.MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (messageBoxResult == MessageBoxResult.Yes)
@@ -33,5 +46,16 @@ namespace RPG__Game.pages
                 System.Windows.Application.Current.Shutdown();
             }
         }
+
+        private void button_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.Cursor = new Cursor(System.Reflection.Assembly.GetExecutingAssembly().Location + "/../../../resources/wow3.cur");
+        }
+
+        private void button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.Cursor = new Cursor(System.Reflection.Assembly.GetExecutingAssembly().Location + "/../../../resources/wow.cur");
+        }
+
     }
 }

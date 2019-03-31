@@ -9,7 +9,8 @@
       d:DesignHeight="490" d:DesignWidth="800"
       Title="Combat"
       Loaded="Window_Loaded"
-      KeyDown="Page_KeyDown">
+      KeyDown="Page_KeyDown"
+      IsVisibleChanged="updateGifs">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -96,10 +97,23 @@
 
         <Image x:Name="pavement" Source="../resources/pavement2.jpg" Grid.ColumnSpan="4" Grid.RowSpan="4" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5"></Image>
 
+        <Label x:Name="ManaLabel" Content="Nemáte dostatek many" Opacity="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="Red" FontSize="25px"></Label>
+
+        <Label x:Name="PyroLabel" Content="Nejprve sešlete 2x fireball" Opacity="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="Red" FontSize="25px"></Label>
+
         <Image x:Name="character_standing" gif:ImageBehavior.AnimatedSource="../resources/character/character_standing.gif" gif:ImageBehavior.AutoStart="True" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px" Visibility="Visible">
             <Image.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform X="0" Y="50"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <Image x:Name="character_escape" gif:ImageBehavior.AnimatedSource="../resources/character/character_walk.gif" gif:ImageBehavior.AutoStart="True" Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px" Visibility="Hidden" Grid.ColumnSpan="2" Margin="195,0,5,122">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform X="0" Y="50"/>
+                    <ScaleTransform ScaleX="-1"></ScaleTransform>
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
@@ -113,6 +127,14 @@
         </Image>
 
         <Image x:Name="fireball_placeholder" gif:ImageBehavior.AnimatedSource="../resources/particles/fireball.gif" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1000" RenderTransformOrigin="0,1" Height="280px" Width="300px" Visibility="Visible" Margin="-28,0,128,0">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform X="1000" Y="10"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <Image x:Name="pyroblast_placeholder" gif:ImageBehavior.AnimatedSource="../resources/particles/pyroblast.gif" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1000" RenderTransformOrigin="0,1" Height="280px" Width="300px" Visibility="Visible" Margin="-28,0,128,0">
             <Image.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform X="1000" Y="10"/>
@@ -137,6 +159,24 @@
         </Image>
 
         <Image x:Name="character_hit" gif:ImageBehavior.AnimatedSource="../resources/character/character_hit.gif" gif:ImageBehavior.AnimationCompleted="characterHitCompleted" gif:ImageBehavior.RepeatBehavior="1x" gif:ImageBehavior.AutoStart="False" Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px" Width="250px" Visibility="Hidden" Margin="-55,0,5,122">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform X="0" Y="50"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <Image x:Name="character_iceblock" gif:ImageBehavior.AnimatedSource="../resources/character/character_iceblock.gif" gif:ImageBehavior.AnimationCompleted="characterIceBlockCompleted" gif:ImageBehavior.RepeatBehavior="1x" gif:ImageBehavior.AutoStart="False" Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px" Width="250px" Visibility="Hidden" Margin="-6,0,156,122" Grid.ColumnSpan="2">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform X="0" Y="50"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+        <Image x:Name="ice_block"  Source="../resources/character/character_iceblock2.png" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Grid.RowSpan="4" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="340px" Width="290px" Visibility="Hidden" Grid.ColumnSpan="2" ></Image>
+
+        <Image x:Name="character_evocation" gif:ImageBehavior.AnimatedSource="../resources/character/character_evocation.gif" gif:ImageBehavior.AnimationCompleted="characterEvocationCompleted" gif:ImageBehavior.AutoStart="False" Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="280px" Width="250px" Visibility="Hidden" Margin="-6,0,156,122" Grid.ColumnSpan="2">
             <Image.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform X="0" Y="50"/>
@@ -215,7 +255,21 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Button x:Name="frostfirebolt" Grid.Column="1" Opacity="1" Grid.Row="1" BorderThickness="0"  Click="frostfirebolt_Click" Panel.ZIndex="1011" Style="{StaticResource DefaultDisabledButton}"></Button>
+            <Button x:Name="frostfirebolt" MouseEnter="spell_MouseEnter" MouseLeave="spell_MouseLeave" Grid.Column="1" Opacity="0.75" Grid.Row="1" BorderThickness="0"  Click="frostfirebolt_Click" Panel.ZIndex="1011" Style="{StaticResource DefaultDisabledButton}"></Button>
+            <Image Source="../resources/spells/spell_fireball.jpg" Grid.Column="1" Grid.Row="1"></Image>
+
+            <Button x:Name="pyroblast" MouseEnter="spell_MouseEnter" MouseLeave="spell_MouseLeave" Grid.Column="3" Opacity="0.75" Grid.Row="1" BorderThickness="0" Click="pyroblast_Click" Panel.ZIndex="1011" Style="{StaticResource DefaultDisabledButton}"></Button>
+            <Image Source="../resources/spells/spell_pyroblast.jpg" Grid.Column="3" Grid.Row="1"></Image>
+
+            <Button x:Name="iceblock" MouseEnter="spell_MouseEnter" MouseLeave="spell_MouseLeave" Grid.Column="5" Opacity="0.75" Grid.Row="1" BorderThickness="0" Click="iceblock_Click" Panel.ZIndex="1011" Style="{StaticResource DefaultDisabledButton}"></Button>
+            <Image Source="../resources/spells/spell_iceblock.jpg" Grid.Column="5" Grid.Row="1"></Image>
+
+            <Button x:Name="evocation" MouseEnter="spell_MouseEnter" MouseLeave="spell_MouseLeave" Grid.Column="7" Opacity="0.75" Grid.Row="1" BorderThickness="0" Click="evocation_Click" Panel.ZIndex="1011" Style="{StaticResource DefaultDisabledButton}"></Button>
+            <Image Source="../resources/spells/spell_evocation.jpg" Grid.Column="7" Grid.Row="1"></Image>
+
+            <Button x:Name="escape" MouseEnter="spell_MouseEnter" MouseLeave="spell_MouseLeave" Grid.Column="9" Opacity="0.75" Grid.Row="1" BorderThickness="0" Panel.ZIndex="1011" Style="{StaticResource DefaultDisabledButton}" Click="escape_Click"></Button>
+            <Image Source="../resources/spells/spell_escape.jpg" Grid.Column="9" Grid.Row="1"></Image>
+
         </Grid>
 
     </Grid>

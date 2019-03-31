@@ -43,16 +43,29 @@ namespace RPG_Game.pages
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = TimeSpan.FromSeconds(0.025);
             dispatcherTimer.Start();
+
+            MainWindow.Inventory.Golds += 10;
         }
 
         private void window_KeyDown(object sender, KeyEventArgs e)
         {
+            if (MainWindow.CurrentPage != this)
+            {
+                return;
+            }
             dispatcherTimer.Start();
             var controller = ImageBehavior.GetAnimationController(character);
 
+            if (e.Key == Key.Z)
+            {
+                MainWindow.CurrentPage = MainWindow.QuestCompleted;
+                MainWindow.Frame.Navigate(MainWindow.QuestCompleted);
+            }
+
             if (e.Key == Key.I)
             {
-                MainWindow.frame.Navigate(new InventoryPage());
+                MainWindow.CurrentPage = MainWindow.InventoryPage;
+                MainWindow.Frame.Navigate(MainWindow.InventoryPage);
             }
 
             if (e.Key == Key.A && state != State.going_left)
@@ -130,6 +143,9 @@ namespace RPG_Game.pages
         {
             if (state == State.going_right)
             {
+                MainWindow.Stats.Position += 10;
+                EnemyStats enemystats = MainWindow.pickClosestEnemy();
+
                 TransformGroup transformGroup = (TransformGroup)pavement.RenderTransform;
                 TransformGroup transformGroup2 = (TransformGroup)pavement2.RenderTransform;
                 TransformGroup transformGroup3 = (TransformGroup)background.RenderTransform;
@@ -144,11 +160,12 @@ namespace RPG_Game.pages
                 translateTransform2.X += -10;
                 translateTransform3.X += -2;
                 translateTransform4.X += -2;
-                translateTransform5.X += -10;
+                translateTransform5.X = enemystats.Positon - MainWindow.Stats.Position;
 
-                if (translateTransform5.X == -1270)
+                if (enemystats.Positon == MainWindow.Stats.Position)
                 {
-                    MainWindow.frame.Navigate(new Combat());
+                    MainWindow.CurrentPage = MainWindow.Combat;
+                    MainWindow.Frame.Navigate(MainWindow.Combat);
                 }
 
                 if (translateTransform.X <= -800)
@@ -173,6 +190,9 @@ namespace RPG_Game.pages
             }
             if (state == State.going_left)
             {
+                MainWindow.Stats.Position -= 10;
+                EnemyStats enemystats = MainWindow.pickClosestEnemy();
+
                 TransformGroup transformGroup = (TransformGroup)pavement.RenderTransform;
                 TransformGroup transformGroup2 = (TransformGroup)pavement2.RenderTransform;
                 TransformGroup transformGroup3 = (TransformGroup)background.RenderTransform;
@@ -187,7 +207,7 @@ namespace RPG_Game.pages
                 translateTransform2.X += 10;
                 translateTransform3.X += 2;
                 translateTransform4.X += 2;
-                translateTransform5.X += 10;
+                translateTransform5.X = enemystats.Positon - MainWindow.Stats.Position;
 
                 if (translateTransform.X >= 800)
                 {
@@ -217,8 +237,18 @@ namespace RPG_Game.pages
             var window = Window.GetWindow(this);
             window.KeyDown += window_KeyDown;
             window.KeyUp += window_KeyUp;
-        }
 
+            EnemyStats enemystats = MainWindow.pickClosestEnemy();
+
+            TransformGroup transformGroup5 = (TransformGroup)enemy.RenderTransform;
+            
+            TranslateTransform translateTransform5 = (TranslateTransform)transformGroup5.Children[3];
+           
+            translateTransform5.X = enemystats.Positon - MainWindow.Stats.Position;
+
+            QuestDescription.Content = MainWindow.CurrentQuest.Description + "   ";
+            QuestProgress.Content = MainWindow.CurrentQuest.CurrentProgress.ToString() + "/" + MainWindow.CurrentQuest.CompletedProgress.ToString() + "   ";
+        }
 
 
     }

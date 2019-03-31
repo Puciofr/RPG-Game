@@ -6,15 +6,11 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:RPG_Game"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="Wowko" Height="490px" Width="800px">
-    <Window.Resources>
-        <ResourceDictionary>
-            <TextBlock x:Key="CursorGrab" Cursor="resources/wow.cur"/>
-        </ResourceDictionary>
-    </Window.Resources>
     <Grid>
 
-        <Frame x:Name="myFrame" Source="pages/OpenWorld.xaml" NavigationUIVisibility="Hidden"></Frame>
+        <Frame x:Name="myFrame" NavigationUIVisibility="Hidden"></Frame>
 
     </Grid>
 </Window>

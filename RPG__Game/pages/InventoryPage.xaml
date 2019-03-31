@@ -8,7 +8,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InventoryPage"
-      KeyDown="Page_KeyDown">
+      KeyDown="Page_KeyDown"
+      IsVisibleChanged="updatePage">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -61,7 +62,7 @@
 
         </Grid>
 
-        <ListView  Style="{Binding ListViewItem}" SelectionChanged="Listview_SelectionChanged" Padding="0" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Name="lvUsers" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <ListView Style="{Binding ListViewItem}" Padding="0" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Name="lvUsers" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid VerticalAlignment="Top" Columns="4" HorizontalAlignment="Stretch"/>
@@ -69,7 +70,7 @@
             </ItemsControl.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="60" Height="60" Margin="0,10,0,0">
+                    <Grid MouseLeftButtonDown="Listview_SelectionChanged" MouseEnter="img_MouseEnter" MouseLeave="img_MouseLeave" Width="60" Height="60" Margin="0,10,0,0">
                         <Label Padding="0" Content="{Binding Number}" Foreground="White" FontWeight="Bold" Panel.ZIndex="1" FontSize="20px"></Label>
                         <Image Stretch="Fill" Source="{Binding Icon}" ToolTip="{Binding ToolTip}" Panel.ZIndex="-1" />
                     </Grid>
@@ -91,45 +92,47 @@
 
         <Label Content="Stamina" Foreground="White" HorizontalAlignment="Center" Panel.ZIndex="1" FontSize="28" FontWeight="Bold"></Label>
 
-        <Button x:Name="SliderAdd" VerticalAlignment="Bottom" Panel.ZIndex="1" Background="Transparent" Height="20" Padding="0" BorderBrush="Transparent" HorizontalAlignment="Right" Click="SliderAdd_Click">
-            <Image Source="../resources/UI/arrow.png"></Image>
-        </Button>
+        <Button x:Name="SliderAdd" MouseEnter="button_MouseEnter" MouseLeave="button_MouseLeave"  VerticalAlignment="Bottom" Grid.Row="0" Panel.ZIndex="2"  Height="20" Width="28" Padding="0" Opacity="0" HorizontalAlignment="Right" Click="SliderAdd_Click"></Button>
+        <Image x:Name="SliderAddImg" Source="../resources/UI/arrow.png" VerticalAlignment="Bottom" Grid.Row="0" Height="20" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="1"></Image>
 
-        <Button x:Name="SliderRemove" VerticalAlignment="Bottom" Panel.ZIndex="1000000" Height="20" HorizontalAlignment="Left" Padding="0" BorderBrush="Transparent" Background="Transparent" Click="SliderRemove_Click">
-            <Image Source="../resources/UI/arrow.png" RenderTransformOrigin="0.5,0.5">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-        </Button>
+        <Button x:Name="SliderRemove" MouseEnter="button_MouseEnter" MouseLeave="button_MouseLeave" VerticalAlignment="Bottom" Grid.Row="0" Panel.ZIndex="2" Height="20" Width="28" HorizontalAlignment="Left" Padding="0" Opacity="0" Click="SliderRemove_Click"></Button>
+        <Image x:Name="SliderRemoveImg" Source="../resources/UI/arrow.png" VerticalAlignment="Bottom" Grid.Row="0" Height="20" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
 
         <Slider x:Name="StaminaSlider" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="200px" Panel.ZIndex="1" ValueChanged="Slider_ValueChanged"></Slider>
 
         <Label Content="Intellect" Foreground="White" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Panel.ZIndex="1" FontSize="28" FontWeight="Bold" Height="54"/>
 
-        <Button x:Name="SliderAdd2" VerticalAlignment="Bottom" Grid.Row="1" Panel.ZIndex="1" Background="Transparent" Height="20" Padding="0" BorderBrush="Transparent" HorizontalAlignment="Right" Click="SliderAdd2_Click">
-            <Image Source="../resources/UI/arrow.png"></Image>
-        </Button>
+        <Button x:Name="SliderAdd2" MouseEnter="button_MouseEnter" MouseLeave="button_MouseLeave" VerticalAlignment="Bottom" Grid.Row="1" Panel.ZIndex="2"  Height="20" Width="28" Padding="0" Opacity="0" HorizontalAlignment="Right" Click="SliderAdd2_Click"></Button>
+        <Image x:Name="SliderAdd2Img" Source="../resources/UI/arrow.png" VerticalAlignment="Bottom" Grid.Row="1" Height="20" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="1"></Image>
 
-        <Button x:Name="SliderRemove2" VerticalAlignment="Bottom" Grid.Row="1" Panel.ZIndex="1000000" Height="20" HorizontalAlignment="Left" Padding="0" BorderBrush="Transparent" Background="Transparent" Click="SliderRemove2_Click">
-            <Image Source="../resources/UI/arrow.png" RenderTransformOrigin="0.5,0.5">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-        </Button>
+        <Button x:Name="SliderRemove2" MouseEnter="button_MouseEnter" MouseLeave="button_MouseLeave" VerticalAlignment="Bottom" Grid.Row="1" Panel.ZIndex="2" Height="20" Width="28" HorizontalAlignment="Left" Padding="0" Opacity="0" Click="SliderRemove2_Click"></Button>
+        <Image x:Name="SliderRemove2Img" Source="../resources/UI/arrow.png" VerticalAlignment="Bottom" Grid.Row="1" Height="20" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
 
         <Slider x:Name="IntellectSlider" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1" Width="200px" Panel.ZIndex="1" ValueChanged="Slider_ValueChanged"></Slider>
 
         <Rectangle Fill="#231a11" Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" RadiusX="20" RadiusY="20"></Rectangle>
-        
+
+        <Button x:Name="ApplyChanges" Grid.Row="3" Content="Potvrdit změny" Background="Crimson" Foreground="White" Width="100px" Height="25px" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontWeight="Bold" Click="ApplyChanges_Click"></Button>
+            
         </Grid>
 
-        <Image x:Name="character_standing" gif:ImageBehavior.AnimatedSource="../resources/character/character_standing.gif" gif:ImageBehavior.AutoStart="True" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="5" Panel.ZIndex="1000" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="330px" Visibility="Visible" Margin="-58,0,58,0.833"/>
+        <Label x:Name="UpgradePointsLabel" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontWeight="DemiBold" Foreground="White" FontSize="15" ></Label>
+
+        <Label x:Name="golds" FontWeight="Bold" Panel.ZIndex="1000" Padding="0" Grid.Row="4" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="17px"/>
+
+        <Image x:Name="character_standing" gif:ImageBehavior.AnimatedSource="../resources/character/character_standing.gif" gif:ImageBehavior.AutoStart="True" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="5" Panel.ZIndex="-1" RenderTransformOrigin="0,1" VerticalAlignment="Bottom" Height="330px" Visibility="Visible" Margin="-58,0,58,0.833"/>
 
         <Image Source="../resources/inventory_background.jpg" Stretch="Fill" Panel.ZIndex="-999999" Grid.ColumnSpan="6" Grid.RowSpan="5"></Image>
 
